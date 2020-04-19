@@ -1,6 +1,5 @@
 import 'package:aztlan/shared/text_form.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:aztlan/shared/colors.dart';
 import 'package:flutter/painting.dart';
@@ -18,7 +17,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ksecondaryDark,
+      backgroundColor: PopBlue,
       body: Stack(
         children: <Widget>[
           CustomPaint(
@@ -51,7 +50,7 @@ class _LoginState extends State<Login> {
                     topRight: Radius.circular(40.0)),
                 child: Container(
                   height: widget.screenHeight * 0.40,
-                  color: ksecondaryLight,
+                  color: White,
                   child: SafeArea(
                     child: Form(
                       child: Column(
@@ -64,7 +63,7 @@ class _LoginState extends State<Login> {
                                 children: <Widget>[
                                   Text(
                                     'Sign In',
-                                    style: TextStyle(fontSize: 30,fontWeight: FontWeight.w500),
+                                    style: TextStyle(fontSize: 30,fontWeight: FontWeight.w400,color: DarkBlue),
                                   ),
                                   Expanded(
                                     child: Padding(
@@ -74,7 +73,7 @@ class _LoginState extends State<Login> {
                                         child: FloatingActionButton(
                                           elevation: 15,
                                           child: Icon(Icons.arrow_forward),
-                                          backgroundColor: Colors.brown[800],
+                                          backgroundColor: DarkBlue,
                                           onPressed: () {},
                                         ),
                                       ),
@@ -141,14 +140,14 @@ class MyCustomPainter extends CustomPainter {
     whitePath.lineTo(size.width * .68, 0);
     whitePath.quadraticBezierTo(size.width * .60, size.height * .48, 0, size.height * 0.60);
     whitePath.close();
-    paint.color = Colors.white30;
+    paint.color = Colors.white38;
     canvas.drawPath(whitePath, paint);
 
     Path brownPath = Path();
     brownPath.lineTo(size.width * .60, 0);
     brownPath.quadraticBezierTo(size.width * .60, size.height * .50, 0, size.height * 0.55);
     brownPath.close();
-    paint.color = Colors.brown[900];
+    paint.color = DarkBlue;
     canvas.drawPath(brownPath, paint);
   }
 

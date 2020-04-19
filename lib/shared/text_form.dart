@@ -12,7 +12,7 @@ class TextForm extends StatelessWidget {
       decoration: InputDecoration(
         prefixIcon: Icon(iconData),
         hintText: hint,
-          fillColor: Colors.blueGrey[100],
+          fillColor: LightBlue,
           filled: true,
           errorStyle: TextStyle(
               color: Colors.red[900],

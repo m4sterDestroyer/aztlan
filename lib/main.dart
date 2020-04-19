@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
 ThemeData BuildThemeData(){
   final baseTheme =ThemeData.light();
   return baseTheme.copyWith(
-    primaryColor: kprimaryColor,
-    primaryColorDark: kprimaryDark,
-    primaryColorLight: kprimaryLight,
-    accentColor: ksecondayColor
+    primaryColor: DarkBlue,
+    primaryColorDark: Black,
+    primaryColorLight: SkyBlue,
+    accentColor: LightBlue
   );
 }
