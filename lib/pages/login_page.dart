@@ -1,5 +1,6 @@
 import 'package:aztlan/shared/text_form.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:aztlan/shared/colors.dart';
 import 'package:flutter/painting.dart';
@@ -14,6 +15,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  var _formkey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,19 +26,23 @@ class _LoginState extends State<Login> {
           CustomPaint(
             painter: MyCustomPainter(),
             child: Container(
-              height: widget.screenHeight*0.65,
+              height: widget.screenHeight * 0.65,
             ),
           ),
           Positioned(
-            top: widget.screenHeight*0.08,
-            left: widget.screenWidth*0.05,
+            top: widget.screenHeight * 0.08,
+            left: widget.screenWidth * 0.05,
             child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
                   Container(
-                      child: Text('Welcome\nBack!',
-                        style: TextStyle(fontSize: 40,fontWeight: FontWeight.w300,color: Colors.white),)
-                  ),
+                      child: Text(
+                    'Hey\nThere!',
+                    style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.w300,
+                        color: Colors.white),
+                  )),
                 ],
               ),
             ),
@@ -49,25 +56,29 @@ class _LoginState extends State<Login> {
                     topLeft: Radius.circular(40.0),
                     topRight: Radius.circular(40.0)),
                 child: Container(
-                  height: widget.screenHeight * 0.40,
+                  height: widget.screenHeight * 0.41,
                   color: White,
                   child: SafeArea(
                     child: Form(
                       child: Column(
                         children: <Widget>[
                           Container(
-                            padding: EdgeInsets.only(left: 30,bottom: 10),
+                            padding: EdgeInsets.only(left: 30, bottom: 10),
                             child: Align(
                               alignment: Alignment.topLeft,
                               child: Row(
                                 children: <Widget>[
                                   Text(
                                     'Sign In',
-                                    style: TextStyle(fontSize: 30,fontWeight: FontWeight.w400,color: DarkBlue),
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.w400,
+                                        color: DarkBlue),
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsets.only(right: 30.0),
+                                      padding:
+                                          const EdgeInsets.only(right: 30.0),
                                       child: Align(
                                         alignment: Alignment.topRight,
                                         child: FloatingActionButton(
@@ -79,14 +90,13 @@ class _LoginState extends State<Login> {
                                       ),
                                     ),
                                   ),
-
                                 ],
                               ),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 20.0, vertical: 10),
+                                horizontal: 20.0, vertical: 5),
                             child: TextForm(
                               obscuretext: false,
                               hint: 'Enter Email',
@@ -95,8 +105,8 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
+                            padding: const EdgeInsets.only(
+                                right: 20, left: 20, top: 5, bottom: 5),
                             child: TextForm(
                               obscuretext: true,
                               hint: 'Enter Password',
@@ -104,14 +114,33 @@ class _LoginState extends State<Login> {
                               iconData: Icons.vpn_key,
                             ),
                           ),
+                          InkWell(
+                              child: Text('Forgot password?',textScaleFactor: 1.1,
+                                style: TextStyle(color: DarkBlue,fontWeight: FontWeight.w500),)
+                          ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsets.only(bottom: 20),
+                              padding: EdgeInsets.only(bottom: 15),
                               child: Align(
                                 alignment: FractionalOffset.bottomCenter,
-                                child: Text(
-                                  'Don\'t have an account? Sign up',
-                                  style: TextStyle(fontSize: 16),
+                                child: RichText(
+                                  text: TextSpan(
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                          text: 'Dont have an account yet? ',
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              color: Colors.black)),
+                                      TextSpan(
+                                          text: 'Sign Up',
+                                          style: TextStyle(
+                                              fontSize: 17,
+                                              color: DarkBlue,
+                                              fontWeight: FontWeight.w600),
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () => print('click')),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -124,12 +153,11 @@ class _LoginState extends State<Login> {
               ),
             ],
           ),
-          ],
+        ],
       ),
     );
   }
 }
-
 
 class MyCustomPainter extends CustomPainter {
   @override
@@ -138,14 +166,16 @@ class MyCustomPainter extends CustomPainter {
 
     Path whitePath = Path();
     whitePath.lineTo(size.width * .68, 0);
-    whitePath.quadraticBezierTo(size.width * .60, size.height * .48, 0, size.height * 0.60);
+    whitePath.quadraticBezierTo(
+        size.width * .60, size.height * .48, 0, size.height * 0.60);
     whitePath.close();
     paint.color = Colors.white38;
     canvas.drawPath(whitePath, paint);
 
     Path brownPath = Path();
     brownPath.lineTo(size.width * .60, 0);
-    brownPath.quadraticBezierTo(size.width * .60, size.height * .50, 0, size.height * 0.55);
+    brownPath.quadraticBezierTo(
+        size.width * .60, size.height * .50, 0, size.height * 0.55);
     brownPath.close();
     paint.color = DarkBlue;
     canvas.drawPath(brownPath, paint);
@@ -155,11 +185,4 @@ class MyCustomPainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) {
     return oldDelegate != this;
   }
-
 }
-
-
-
-
-
-
