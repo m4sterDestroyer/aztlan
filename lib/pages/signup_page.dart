@@ -18,6 +18,7 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: PopBlue,
       body: Column(
         children: <Widget>[
@@ -27,7 +28,7 @@ class _SignupState extends State<Signup> {
                 bottomRight: Radius.circular(40.0)),
             child: Container(
               color: White,
-              height: widget.screenHeight * 0.5,
+              height: widget.screenHeight * 0.7,
               width: widget.screenWidth,
               child: Form(
                 child: ListView(
@@ -36,11 +37,21 @@ class _SignupState extends State<Signup> {
                       padding: const EdgeInsets.only(
                           left: 30.0, right: 30.0, top: 20, bottom: 15.0),
                       child: Text(
-                        'Register with us',
+                        'Create An Account',
                         style: TextStyle(
                             fontSize: 28,
                             fontWeight: FontWeight.w400,
                             color: DarkBlue),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 10),
+                      child: TextForm(
+                        obscuretext: true,
+                        hint: 'Enter Your Name',
+                        labelText: 'Name',
+                        iconData: Icons.perm_identity,
                       ),
                     ),
                     Padding(
@@ -59,6 +70,16 @@ class _SignupState extends State<Signup> {
                       child: TextForm(
                         obscuretext: true,
                         hint: 'Enter Password',
+                        labelText: 'Password',
+                        iconData: Icons.vpn_key,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0, vertical: 10),
+                      child: TextForm(
+                        obscuretext: true,
+                        hint: 'Confirm Password',
                         labelText: 'Password',
                         iconData: Icons.vpn_key,
                       ),
@@ -107,8 +128,8 @@ class _SignupState extends State<Signup> {
           ),
           Expanded(
             child: Container(
-                width: 360,
-                height: 360,
+                width: widget.screenWidth*0.7,
+                height: widget.screenHeight*0.3,
                 child: Image(
                   image: AssetImage('images/man.png'),
                 )),
