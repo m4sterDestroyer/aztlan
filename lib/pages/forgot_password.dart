@@ -1,4 +1,3 @@
-import 'package:aztlan/shared/text_form.dart';
 import 'package:aztlan/shared/text_form_two.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +20,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         color: PopBlue,
         child: Center(
           child: Container(
-            height: widget.screenHeight*0.74,
+            height: widget.screenHeight*0.75,
             width:  widget.screenWidth*0.9,
             child: Card(
                 elevation: 20.0,
@@ -30,9 +29,9 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     child: ListView(
                       children: <Widget>[
                         Container(
-                          height: 300,
+                          height: 280,
                             child: Image(
-                              image: AssetImage('images/forgotnew.PNG'),
+                              image: AssetImage('images/forgot.png'),
                             )),
                         Center(
                           child: Padding(

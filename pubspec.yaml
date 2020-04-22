@@ -44,6 +44,8 @@ flutter:
   assets:
     - images/man.png
     - images/forgotnew.PNG
+    - images/forgot.png
+
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
