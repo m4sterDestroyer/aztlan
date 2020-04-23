@@ -1,3 +1,5 @@
+import 'package:aztlan/onboard_shared/items.dart';
+import 'package:aztlan/onboard_shared/slide_model/slide_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +16,8 @@ class Onboard extends StatefulWidget {
 }
 
 class _OnboardState extends State<Onboard> {
+  final PageController _pageController = PageController(initialPage: 0);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,41 +35,15 @@ class _OnboardState extends State<Onboard> {
           child: Column(
             children: [
               Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 300,
-                      height: 300,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('images/man.png'),
-                          fit: BoxFit.cover
-                        )
-                      ),
-                    ),SizedBox(height: 20,),
-                    Text(
-                      'This is the heading',
-                      style: TextStyle(
-                        fontSize: 22,
-                        color: White,
-                      ),
-                    ),
-                    SizedBox(height: 10,),
-                    Text(
-                      'This is the heading and you can put what ever text you over here. The text can be bold italics'
-                          'anything of your choice',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: White,
-                      ),
-                    ),
-                  ],
-                ),
+                  child: PageView.builder(
+                controller: _pageController,
+                scrollDirection: Axis.horizontal,
+                itemCount: SlideList.length,
+                itemBuilder: (context, index) => Items(index),
+              )),
+              SizedBox(
+                height: 20,
               ),
-              SizedBox(height: 20,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -91,8 +69,8 @@ class _OnboardState extends State<Onboard> {
                           children: <TextSpan>[
                             TextSpan(
                                 text: 'Dont have an account yet? ',
-                                style:
-                                    TextStyle(fontSize: 18, color: Colors.black)),
+                                style: TextStyle(
+                                    fontSize: 18, color: Colors.black)),
                             TextSpan(
                                 text: 'Sign Up',
                                 style: TextStyle(
