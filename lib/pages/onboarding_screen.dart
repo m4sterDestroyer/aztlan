@@ -1,13 +1,14 @@
+import 'dart:async';
 import 'package:aztlan/onboard_shared/items.dart';
 import 'package:aztlan/onboard_shared/slide_model/slide_details.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:aztlan/shared/colors.dart';
+import 'package:aztlan/onboard_shared/dots.dart';
 
 class Onboard extends StatefulWidget {
   final double screenHeight, screenWidth;
-
   const Onboard({Key key, this.screenHeight, this.screenWidth})
       : super(key: key);
 
@@ -16,7 +17,35 @@ class Onboard extends StatefulWidget {
 }
 
 class _OnboardState extends State<Onboard> {
+  int _currentPage = 0;
   final PageController _pageController = PageController(initialPage: 0);
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(Duration(seconds: 5), (Timer timer) {
+      if (_currentPage < 2) {
+        _currentPage++;
+      } else {
+        _currentPage = 0;
+      }
+    });
+    if(_pageController.hasClients){
+    _pageController.animateToPage(_currentPage,
+        duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+  }}
+
+  _onPageChanged(int index) {
+    setState(() {
+      _currentPage = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +64,35 @@ class _OnboardState extends State<Onboard> {
           child: Column(
             children: [
               Expanded(
-                  child: PageView.builder(
-                controller: _pageController,
-                scrollDirection: Axis.horizontal,
-                itemCount: SlideList.length,
-                itemBuilder: (context, index) => Items(index),
-              )),
+                  child: Stack(
+                    alignment: AlignmentDirectional.bottomCenter,
+                    children: [
+                      PageView.builder(
+                        onPageChanged: _onPageChanged,
+                        controller: _pageController,
+                        scrollDirection: Axis.horizontal,
+                        itemCount: SlideList.length,
+                        itemBuilder: (context, index) => Items(index),
+                      ),
+                      Stack(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(bottom: 30),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                for(int i = 0; i<SlideList.length; i++)
+                                  if( i == _currentPage )
+                                    SlideDots(true)
+                                  else
+                                    SlideDots(false)
+                              ],
+                            ),                          )
+                        ],
+                      )
+                    ],
+                  )),
               SizedBox(
                 height: 20,
               ),
