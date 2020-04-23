@@ -100,18 +100,21 @@ class _OnboardState extends State<Onboard> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  FlatButton(
-                    child: Text(
-                      'Getting Started',
-                      style: TextStyle(fontSize: 18),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: FlatButton(
+                      child: Text(
+                        'Getting Started',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      padding: EdgeInsets.all(15),
+                      color: White,
+                      textColor: DarkBlue,
+                      onPressed: () {},
                     ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    padding: EdgeInsets.all(15),
-                    color: DarkBlue,
-                    textColor: White,
-                    onPressed: () {},
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 12, bottom: 10),
@@ -120,13 +123,13 @@ class _OnboardState extends State<Onboard> {
                         text: TextSpan(
                           children: <TextSpan>[
                             TextSpan(
-                                text: 'Dont have an account yet? ',
+                                text: 'Already a user? ',
                                 style: TextStyle(
-                                    fontSize: 18, color: Colors.black)),
+                                    fontSize: 18, color: White)),
                             TextSpan(
-                                text: 'Sign Up',
+                                text: 'Sign In',
                                 style: TextStyle(
-                                    fontSize: 18,
+                                    fontSize: 19,
                                     color: White,
                                     fontWeight: FontWeight.w600),
                                 recognizer: TapGestureRecognizer()
