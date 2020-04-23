@@ -10,22 +10,22 @@ class Slide {
 final SlideList = [
   Slide(
       image: 'images/man.png',
-      title: 'Prompt customer care services',
+      title: 'Easy to understand User Interface',
       description:
-          'Through our services we provide you with the best experience for your professional work.'),
+          'We provide our users with a very friendly and easy to understand interface!'),
   Slide(
       image: 'images/oneonone.png',
-      title: 'Amazing 1 on 1s',
+      title: 'Fine 1:1s experience',
       description:
-          'Through our services we provide you with the best experience for your professional work.'),
+          'Through our services we provide you with the best experience of 1:1s for your professional work.'),
   Slide(
       image: 'images/work.png',
       title: 'Service on demand',
       description:
-          'Through our services we provide you with the best experience for your professional work.'),
+          'Get your queries and issues resolved in no time'),
   Slide(
-      image: 'images/calendar.png',
+      image: 'images/calander.png',
       title: 'Prompt customer care services',
       description:
-          'Through our services we provide you with the best experience for your professional work.'),
+          'Happy to serve you at any time :)'),
 ];
