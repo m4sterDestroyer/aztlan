@@ -130,7 +130,7 @@ class _OnboardState extends State<Onboard> {
                                 text: 'Sign In',
                                 style: TextStyle(
                                     fontSize: 19,
-                                    color: White,
+                                    color: Colors.cyanAccent,
                                     fontWeight: FontWeight.w600),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () => print('click')),
