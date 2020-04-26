@@ -12,6 +12,6 @@ class LoginHomeWrapper extends StatelessWidget {
     screenHeight = MediaQuery.of(context).size.height;
     screenWidth = MediaQuery.of(context).size.width;
 
-    return Onboard(screenWidth: screenWidth,screenHeight: screenHeight,);
+    return Onboard();
   }
 }

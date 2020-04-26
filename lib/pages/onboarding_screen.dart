@@ -1,6 +1,9 @@
 import 'dart:async';
 import 'package:aztlan/onboard_shared/items.dart';
 import 'package:aztlan/onboard_shared/slide_model/slide_details.dart';
+import 'package:aztlan/pages/login_page.dart';
+import 'package:aztlan/pages/signup_page.dart';
+import 'package:aztlan/route_generator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +11,6 @@ import 'package:aztlan/shared/colors.dart';
 import 'package:aztlan/onboard_shared/dots.dart';
 
 class Onboard extends StatefulWidget {
-  final double screenHeight, screenWidth;
-  const Onboard({Key key, this.screenHeight, this.screenWidth})
-      : super(key: key);
 
   @override
   _OnboardState createState() => _OnboardState();
@@ -36,10 +36,11 @@ class _OnboardState extends State<Onboard> {
         _currentPage = 0;
       }
     });
-    if(_pageController.hasClients){
-    _pageController.animateToPage(_currentPage,
-        duration: Duration(milliseconds: 300), curve: Curves.easeIn);
-  }}
+    if (_pageController.hasClients) {
+      _pageController.animateToPage(_currentPage,
+          duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+    }
+  }
 
   _onPageChanged(int index) {
     setState(() {
@@ -65,34 +66,35 @@ class _OnboardState extends State<Onboard> {
             children: [
               Expanded(
                   child: Stack(
-                    alignment: AlignmentDirectional.bottomCenter,
+                alignment: AlignmentDirectional.bottomCenter,
+                children: [
+                  PageView.builder(
+                    onPageChanged: _onPageChanged,
+                    controller: _pageController,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: SlideList.length,
+                    itemBuilder: (context, index) => Items(index),
+                  ),
+                  Stack(
                     children: [
-                      PageView.builder(
-                        onPageChanged: _onPageChanged,
-                        controller: _pageController,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: SlideList.length,
-                        itemBuilder: (context, index) => Items(index),
-                      ),
-                      Stack(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(bottom: 30),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                for(int i = 0; i<SlideList.length; i++)
-                                  if( i == _currentPage )
-                                    SlideDots(true)
-                                  else
-                                    SlideDots(false)
-                              ],
-                            ),                          )
-                        ],
+                      Container(
+                        margin: EdgeInsets.only(bottom: 30),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            for (int i = 0; i < SlideList.length; i++)
+                              if (i == _currentPage)
+                                SlideDots(true)
+                              else
+                                SlideDots(false)
+                          ],
+                        ),
                       )
                     ],
-                  )),
+                  )
+                ],
+              )),
               SizedBox(
                 height: 20,
               ),
@@ -113,7 +115,10 @@ class _OnboardState extends State<Onboard> {
                       padding: EdgeInsets.all(15),
                       color: White,
                       textColor: DarkBlue,
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).popAndPushNamed('/signup',
+                            arguments:{'screenHeight':MediaQuery.of(context).size.height,'screenWidth':MediaQuery.of(context).size.width});
+                      },
                     ),
                   ),
                   Padding(
@@ -124,8 +129,7 @@ class _OnboardState extends State<Onboard> {
                           children: <TextSpan>[
                             TextSpan(
                                 text: 'Already a user? ',
-                                style: TextStyle(
-                                    fontSize: 18, color: White)),
+                                style: TextStyle(fontSize: 18, color: White)),
                             TextSpan(
                                 text: 'Sign In',
                                 style: TextStyle(
@@ -133,7 +137,8 @@ class _OnboardState extends State<Onboard> {
                                     color: Colors.cyanAccent,
                                     fontWeight: FontWeight.w600),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () => print('click')),
+                                  ..onTap = () => Navigator.of(context).popAndPushNamed('/login',
+                                      arguments:{'screenHeight':MediaQuery.of(context).size.height,'screenWidth':MediaQuery.of(context).size.width})),
                           ],
                         ),
                       ),
@@ -147,4 +152,19 @@ class _OnboardState extends State<Onboard> {
       ),
     );
   }
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

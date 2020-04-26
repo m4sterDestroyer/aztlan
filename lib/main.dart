@@ -1,17 +1,22 @@
+import 'package:aztlan/route_generator.dart';
 import 'package:flutter/material.dart';
-import 'login_home_wrapper.dart';
 import 'shared/colors.dart';
+// There is no need for adding bloc for forgot_password and onBoardingScreen
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Aztlan',
       theme:BuildThemeData(),
-      home: LoginHomeWrapper(),
+      //home: LoginHomeWrapper(),
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,
     );
   }
 }
