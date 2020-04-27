@@ -7,43 +7,7 @@ class WebHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 2,
-        title: Text(
-          'Aztlan',
-          style: TextStyle(
-              color: Black,
-              fontSize: 30,
-              fontWeight: FontWeight.w600),
-        ),
-        backgroundColor: White,
-        actions: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Products', style: TextStyle(color: Black, fontSize: 16)).showHoverCursor,
-              SizedBox(
-                width: 30,
-              ),
-              Text('Workflows',
-                  style: TextStyle(color: Black, fontSize: 16)).showHoverCursor,
-              SizedBox(
-                width: 30,
-              ),
-              Text('Login', style: TextStyle(color: Black, fontSize: 16)).showHoverCursor,
-              SizedBox(
-                width: 30,
-              ),
-              Text('Demo',
-                  style: TextStyle(
-                      color: Black, fontSize: 16, fontWeight: FontWeight.w800)).showHoverCursor,
-              SizedBox(
-                width: 40,
-              ),
-            ],
-          )
-        ],
-      ),
+      appBar: appbar(),
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth > 800) {
