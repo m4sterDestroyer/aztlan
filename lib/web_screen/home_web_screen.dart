@@ -1,6 +1,7 @@
 import 'package:aztlan/shared/colors.dart';
 import 'package:aztlan/shared/web_shared/appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:aztlan/extensions/hover_extension.dart';
 
 class WebHome extends StatelessWidget {
   @override
@@ -20,22 +21,22 @@ class WebHome extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Products', style: TextStyle(color: Black, fontSize: 16)),
+              Text('Products', style: TextStyle(color: Black, fontSize: 16)).showHoverCursor,
               SizedBox(
                 width: 30,
               ),
               Text('Workflows',
-                  style: TextStyle(color: Black, fontSize: 16)),
+                  style: TextStyle(color: Black, fontSize: 16)).showHoverCursor,
               SizedBox(
                 width: 30,
               ),
-              Text('Login', style: TextStyle(color: Black, fontSize: 16)),
+              Text('Login', style: TextStyle(color: Black, fontSize: 16)).showHoverCursor,
               SizedBox(
                 width: 30,
               ),
               Text('Demo',
                   style: TextStyle(
-                      color: Black, fontSize: 16, fontWeight: FontWeight.w800)),
+                      color: Black, fontSize: 16, fontWeight: FontWeight.w800)).showHoverCursor,
               SizedBox(
                 width: 40,
               ),
