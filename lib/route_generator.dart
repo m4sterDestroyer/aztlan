@@ -1,6 +1,7 @@
 import 'package:aztlan/pages/login_page.dart';
 import 'package:aztlan/pages/onboarding_screen.dart';
 import 'package:aztlan/pages/signup_page.dart';
+import 'package:aztlan/web_screen/home_web_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator{
@@ -9,7 +10,8 @@ class RouteGenerator{
 
     switch(settings.name){
       case '/':
-        return MaterialPageRoute(builder: (_)=> Onboard());
+     //   return MaterialPageRoute(builder: (_)=> Onboard());
+          return MaterialPageRoute(builder: (_) => WebHome());
       case '/login':
         return MaterialPageRoute(builder: (_)=> Login(screenHeight: args['screenHeight'],screenWidth: args['screenWidth'],));
       case '/signup':
