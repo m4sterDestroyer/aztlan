@@ -1,32 +1,103 @@
 import 'package:aztlan/shared/colors.dart';
+import 'package:aztlan/shared/text_form_two.dart';
 import 'package:aztlan/shared/web_shared/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:aztlan/extensions/hover_extension.dart';
+import 'package:aztlan/extensions/hover_extension.dart';
 
 class WebHome extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: appbar(),
-      body: LayoutBuilder(
+    return Column(children: [
+      LayoutBuilder(
         builder: (context, constraints) {
-          if (constraints.maxWidth > 800) {
-            return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: PageChildren(constraints.biggest.width / 2));
+          if (constraints.maxWidth>800) {
+            return Column(
+              children: [
+                Container(
+                  width: constraints.maxWidth,
+                  color: PopBlue,
+                  child: Row(
+                  children: PageChildren(constraints.biggest.width/2),
+                  ),
+                ),
+              ],
+            );
           } else {
-            return Column(children: PageChildren(constraints.biggest.width));
+            return Column(
+              children: [
+                Container(
+                  color: PopBlue,
+                  child: Column(
+                    children: PageChildren(constraints.biggest.width),
+                  ),
+                ),
+              ],
+            );
           }
         },
       ),
-    );
+    ]);
   }
 
-  List<Widget> PageChildren(double width) {
+  List<Widget> PageChildren(double curWidth) {
     return <Widget>[
       Container(
-        width: width,
-      )
+        child: Image.asset(
+          "images/workflow.png",
+          width: curWidth,
+        ),
+      ),
+      //SizedBox(width: 80,height: 40,),
+      Container(
+        width: curWidth,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Text(
+                  'SHARE YOUR\n' + 'OFFICIAL UPDATES AT EASE',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w700,
+                      height: 0.9,
+                      fontSize: 40,
+                      color: White),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 10),
+              child: Text(
+                'At Aztlan, we tend to streamline the process of sharing updates and feedback with your colleagues.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18, color: White),
+              ),
+            ),Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: FlatButton(
+                child: Text(
+                  'Getting Started',
+                  style: TextStyle(fontSize: 16),
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                padding: EdgeInsets.all(10),
+                color: White,
+                textColor: DarkBlue,
+                onPressed: () {},
+              ).showHoverCursor.moveUpOnHover,
+            ),
+          ],
+        ),
+      ),
     ];
   }
 }
+
+
