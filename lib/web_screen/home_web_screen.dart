@@ -1,8 +1,5 @@
 import 'package:aztlan/shared/colors.dart';
-import 'package:aztlan/shared/text_form_two.dart';
-import 'package:aztlan/shared/web_shared/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:aztlan/extensions/hover_extension.dart';
 import 'package:aztlan/extensions/hover_extension.dart';
 
 class WebHome extends StatelessWidget {
@@ -19,7 +16,7 @@ class WebHome extends StatelessWidget {
                   width: constraints.maxWidth,
                   color: PopBlue,
                   child: Row(
-                  children: PageChildren(constraints.biggest.width/2),
+                  children: PageChildren(constraints.biggest.width/2,context),
                   ),
                 ),
               ],
@@ -30,7 +27,7 @@ class WebHome extends StatelessWidget {
                 Container(
                   color: PopBlue,
                   child: Column(
-                    children: PageChildren(constraints.biggest.width),
+                    children: PageChildren(constraints.biggest.width,context),
                   ),
                 ),
               ],
@@ -41,7 +38,7 @@ class WebHome extends StatelessWidget {
     ]);
   }
 
-  List<Widget> PageChildren(double curWidth) {
+  List<Widget> PageChildren(double curWidth,BuildContext context) {
     return <Widget>[
       Container(
         child: Image.asset(
@@ -90,7 +87,9 @@ class WebHome extends StatelessWidget {
                 padding: EdgeInsets.all(10),
                 color: White,
                 textColor: DarkBlue,
-                onPressed: () {},
+                onPressed: () {
+                Navigator.pushNamed(context, '/log',);
+                },
               ).showHoverCursor.moveUpOnHover,
             ),
           ],
