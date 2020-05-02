@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 class Log extends StatelessWidget {
   final double screenHeight, screenWidth;
-
   const Log({Key key, this.screenHeight, this.screenWidth}) : super(key: key);
 
   @override
