@@ -1,8 +1,6 @@
 import 'dart:html';
-
-import 'package:aztlan/main.dart';
-import 'package:aztlan/onboard_shared/dots.dart';
 import 'package:aztlan/shared/colors.dart';
+import 'package:aztlan/web_screen/Dialog_boxes/dialog_box.dart';
 import 'package:flutter/material.dart';
 
 import 'one_to_one_content.dart';
@@ -20,7 +18,7 @@ class OneToOne extends StatelessWidget {
         return Stack(children: [
           Container(
               width: screenWidth,
-              height: screenHeight * 0.2,
+              height: screenHeight * 0.3,
               color: Colors.indigo[400]),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -108,7 +106,6 @@ class OneToOne extends StatelessWidget {
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 80,),
         child: Container(
-          color: White,
           height: screenHeight * 0.7,
           width: screenWidth * 0.5,
         child: OneToOneContent(width: screenWidth * 0.5,height: screenHeight*0.7,)
@@ -119,68 +116,3 @@ class OneToOne extends StatelessWidget {
   }
 }
 
-class CustomDialog extends StatelessWidget {
-  final double screenHeight, screenWidth;
-
-  const CustomDialog({Key key, this.screenHeight, this.screenWidth})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    double height= screenHeight * 0.5;
-    double width= screenWidth * 0.4;
-
-    return Dialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: Container(
-        height: height,
-        width: width,
-        child: Column(
-          children: [
-            Container(
-              width: width,
-              height: height*0.15,
-              color: DarkBlue,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Spacer(flex: 3,),
-                    Center(
-                      child: Text(
-                        'My Schedule',
-                        style: TextStyle(
-                            color: White, fontSize: 24, fontWeight: FontWeight.w400),
-                      ),
-                    ),Spacer(flex: 2,),
-                    Expanded(
-                      child: IconButton(
-                        icon: Icon(Icons.clear),
-                        color: White,
-                        onPressed: ()=>Navigator.of(context).pop(),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 30),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-
-                  Container(height: 250,width: 350,color: Colors.red,child: Center(child: Text('Calander View',style: TextStyle(color: White),),),),
-                  Container(height: 250,width: 200,color: Colors.green,child: Center(child: Text('My day schedule',style: TextStyle(color: White),),)),
-
-                ],
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}

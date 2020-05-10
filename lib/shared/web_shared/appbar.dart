@@ -34,7 +34,7 @@ class appbarDesktop extends AppBar {
                   ),
                   Text('Login', style: TextStyle(color: Black, fontSize: 16))
                       .showHoverCursor
-                      .moveUpOnHover,
+                        .moveUpOnHover,
                   SizedBox(
                     width: 30,
                   ),
